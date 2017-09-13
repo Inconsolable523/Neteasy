@@ -1,0 +1,734 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import "sreset";
+
+@media screen and (max-width: 1206px) {
+    //小屏视觉布局
+    .m-left {
+        width: 735px;
+    }
+    .g-mn {
+        width: 962px;
+    }
+
+}
+
+@media screen and (min-width: 1206px) {
+    //大屏视觉布局
+    .m-left {
+        width: 980px;
+    }
+    .g-mn {
+        width: 1206px;
+    }
+}
+
+%margin {
+    margin: 0 auto;
+}
+
+body {
+    min-width: 1206px;
+}
+
+//不再提醒
+.m-tips {
+    width: 100%;
+    color: #333;
+    background: #f3f3f3;
+    line-height: 36px;
+    display: none;
+    .f-tac {
+        width: 1206px;
+        @extend %margin;
+    }
+    .watch {
+        margin-left: 7px;
+        color: #4eab46;
+    }
+    .delete {
+        cursor: pointer;
+        float: right;
+        span {
+            margin-right: 6px;
+        }
+    }
+
+}
+
+//头部
+//导航
+.m-nav {
+    width: 100%;
+    height: 88px;
+    position: relative;
+    .f-tac {
+        width: 1206px;
+        overflow: hidden;
+        line-height: 88px;
+        margin: 0 auto;
+    }
+    //导航左边
+    &-left {
+        float: left;
+        position: relative;
+        .u-title {
+            font-size: 22px;
+            .color {
+                color: #39a030;
+            }
+            .style {
+                @extend .color;
+                margin: 0 10px;
+            }
+
+        }
+        .f-wrap {
+            position: absolute;
+            top: 50%;
+            margin-top: -48px;
+            left: 228px;
+            height: 96px;
+            width: 200px;
+        }
+        .u-care {
+            line-height: 22px;
+            display: inline-block;
+            width: 54px;
+            margin: 0 14px 0 30px;
+            background: #21a557;
+            text-align: center;
+            .follow {
+                color: #fff;
+            }
+        }
+        .u-followed {
+            display: inline-block;
+            width: 104px;
+            height: 20px;
+            background: #f6f6f6;
+            border: 1px solid #efefef;
+            border-radius: 2px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 14px 0 30px;
+            .remove {
+                color: #9b9b9b;
+                &:hover {
+                    color: #459947;
+                }
+            }
+        }
+        .u-fans {
+            color: #b8b8b8;
+            span {
+                margin-left: 6px;
+            }
+        }
+
+    }
+    //导航右边
+    &-right {
+        float: right;
+        font-size: 16px;
+        .course {
+            color: #868686;
+            margin-left: 56px;
+            transition: color .6s;
+            &:hover {
+                color: #4eab46;
+            }
+        }
+        a:last-child {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: url("../images/search.png") no-repeat 0 -19px;
+            &:hover {
+                background: url("../images/search.png") no-repeat;
+            }
+            margin-left: 30px;
+        }
+    }
+}
+
+//轮播
+.m-banner {
+    @media screen and (min-width: 1643px) {
+        width: 1602px;
+    }
+    width: 100%;
+    margin: 0 auto;
+    height: 460px;
+    position: relative;
+    overflow: hidden;
+    .wrap {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        .banner-img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+        }
+    }
+    .f-cb {
+        *zoom: 1;
+    }
+    .f-cb:after {
+        content: '';
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: hidden;
+    }
+    .u-btn {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+        span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+            margin-right: 11px;
+            cursor: pointer;
+            z-index: 5;
+        }
+        .on {
+            background: black;
+        }
+    }
+}
+
+//各课程介绍
+.m-introduce {
+    @extend %margin;
+    max-width: 1206px;
+    height: 296px;
+    position: relative;
+    font-size: 14px;
+    font-family: "华文仿宋", serif, sans-serif;
+    line-height: 24px;
+    color: #b8b8b8;
+    .f-center {
+        height: 100%;
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            width: 1px;
+            vertical-align: middle;
+        }
+    }
+    .class-content {
+        width: 32.3%;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        > div {
+            padding-left: 35%;
+        }
+    }
+
+    h1 {
+        font-family: "MicrosoftYaHei", serif, sans-serif;
+        font-size: 22px;
+        line-height: 44px;
+        color: #2a2a2a;
+    }
+    img {
+        position: absolute;
+        top: 16px;
+        left: 36px;
+    }
+    p {
+        margin-bottom: 21px;
+    }
+
+    a {
+        color: #4eab46;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+//宣传图片
+.m-picture {
+    height: 220px;
+    overflow: hidden;
+    .wrap {
+        width: 1609px;
+        margin: 0 auto;
+    }
+}
+
+//主要内容
+.s-bg {
+    background: #f6f6f6;
+}
+
+.g-mn {
+    height: 1472px;
+    padding-top: 84px;
+    margin: 0 auto;
+    position: relative;
+    .m-left {
+        position: relative;
+        .u-change {
+            a {
+                display: inline-block;
+                width: 200px;
+                height: 48px;
+                font-size: 20px;
+                font-family: "华文仿宋", serif, sans-serif;
+                text-decoration: none;
+                background: #fff;
+                text-align: center;
+                margin-right: -4px;
+                color: #575757;
+                span {
+                    line-height: 48px;
+                }
+            }
+            .check {
+                background: #4eab46;
+                color: white;
+            }
+        }
+        .m-class {
+            margin-top: 28px;
+            height: 1220px;
+        }
+        //详细课程介绍
+        .m-content {
+            position: relative;
+            line-height: 22px;
+            width: 222px;
+            height: 228px;
+            float: left;
+            background: white;
+            margin-right: 22px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            font-family: "MicrosoftYaHei", serif, sans-serif;
+            .u-picture {
+                height: 125px;
+                .m-details {
+                    position: absolute;
+                    z-index: 999;
+                    top: -10px;
+                    left: -10px;
+                    display: none;
+                    width: 479px;
+                    background: #fff;
+                    box-shadow: 0 0 1px 2px #edeced;
+                    .u-header {
+                        overflow: hidden;
+                        width: 457px;
+                        height: 133px;
+                        padding: 11px;
+                        img {
+                            float: left;
+                        }
+                        .u-info {
+                            float: left;
+                            overflow: hidden;
+                            width: 215px;
+                            margin-left: 19px;
+                            .title {
+                                margin-bottom: 17px;
+                                padding-top: 2px;
+                                font-size: 18px;
+                                color: #333;
+                            }
+                            .leaner {
+                                display: inline-block;
+                                height: 16px;
+                                margin-left: 4px;
+                                padding-left: 15px;
+                                font-size: 12px;
+                                color: #666;
+                                background: url("../images/people.png") 0 5px no-repeat;
+                            }
+                            .distor {
+                                margin-top: 5px;
+                                margin-left: 4px;
+                                font-size: 12px;
+                                color: #666;
+                                a:hover {
+                                    cursor: pointer;
+                                    color: #39a030;
+                                }
+                            }
+                            .category {
+                                margin-top: 5px;
+                                margin-left: 4px;
+                                font-size: 12px;
+                                color: #666;
+                            }
+                        }
+                    }
+                    .u-content1 {
+                        width: 479px;
+                        background-color: #f8f8f8;
+                        p {
+                            overflow: hidden;
+                            width: 433px;
+                            padding: 11px 23px;
+                            font-size: 14px;
+                            color: #666;
+                        }
+                    }
+                }
+                &:hover .m-details {
+                    cursor: pointer;
+                    box-shadow: 4px 4px 4px #ecebeb;
+                    display: block;
+                }
+            }
+            .u-content2 {
+                height: 104px;
+                margin: 4px 10px 0 10px;
+                a {
+                    display: inline-block;
+                    width: 210px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    &:hover {
+                        color: #78b672;
+                    }
+                }
+                .style {
+                    display: block;
+                    color: #9f9f9f;
+                    margin-top: -8px;
+                }
+                .count {
+                    display: inline-block;
+                    height: 18px;
+                    line-height: 18px;
+                    border-radius: 2px;
+                    margin-top: 6px;
+                    background: url("../images/course_price.png") 3px 2px no-repeat;
+                    color: #d5d5d5;
+                    font-size: 14px;
+                    border: 1px solid #d5d5d5;
+                    span {
+                        margin-left: 18px;
+                        margin-right: -5px;
+                    }
+                }
+                .checked {
+                    color: #e34428;
+                }
+
+            }
+        }
+
+        //页码
+        .m-list {
+            position: absolute;
+            right: 22px;
+            bottom: -50px;
+            height: 20px;
+            .move {
+                display: inline-block;
+                width: 30px;
+                height: 20px;
+                font-size: 14px;
+                background: #8dd2a1;
+                line-height: 20px;
+                text-align: center;
+                color: #fefffe;
+            }
+            //页面数字
+            .classList {
+                display: inline-block;
+                width: 250px;
+                height: 20px;
+                overflow: hidden;
+                > a {
+                    display: inline-block;
+                    text-align: center;
+                    line-height: 20px;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 5px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    color: black;
+                }
+                a:hover, .list-checked {
+                    color: #8dd2a1;
+                }
+            }
+        }
+    }
+    //右侧
+    .m-right {
+        position: absolute;
+        right: 0;
+        top: 84px;
+        width: 226px;
+        .m-organizition {
+            background: white;
+            height: 230px;
+            h1 {
+                padding-left: 18px;
+                height: 54px;
+                line-height: 54px;
+                font-size: 16px;
+            }
+            div {
+                border-top: 1px solid #e0e0e0;
+            }
+            p {
+                padding-left: 18px;
+                margin-top: 20px;
+                font-size: 14px;
+                color: #9b9b9b;
+            }
+            a {
+                display: inline-block;
+                width: 202px;
+                height: 110px;
+                margin-top: 10px;
+                background: url(../images/vidio.png) no-repeat 18px 0;
+                img {
+                    margin-left: 82px;
+                    margin-top: 30px;
+                }
+            }
+        }
+        .m-hot {
+            height: 778px;
+            background: white;
+            margin-top: 20px;
+            position: relative;
+            h1 {
+                padding-left: 18px;
+                height: 56px;
+                border-bottom: 1px solid #e0e0e0;
+                font-size: 16px;
+                line-height: 56px;
+            }
+            .style {
+                width: 3000px;
+            }
+            ul {
+                list-style: none;
+                font-size: 14px;
+                color: #3b3b3b;
+                border-top: 1px solid #e0e0e0;
+                height: 718px;
+                overflow: hidden;
+                position: absolute;
+                left: 0;
+                top: 56px;
+            }
+            .u-hotRank {
+                margin-top: 20px;
+                padding-left: 18px;
+                height: 50px;
+                position: relative;
+                background: url(../images/people.png) no-repeat 84px 29px;
+                a {
+                    text-decoration: none;
+                    font-size: 14px;
+                    color: black;
+                    width: 123px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                    margin-top: -55px;
+                    margin-left: 65px;
+                }
+                img {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                }
+                span {
+                    position: absolute;
+                    left: 98px;
+                    top: 26px;
+                    color: #9d9d9d;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+//页脚
+.g-foot {
+    height: 262px;
+    background: #21262b;
+    .m-wrapper {
+        @media (max-width: 1205px) {
+        }
+        max-width: 1206px;
+        padding: 94px 0 0 50px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .m-footleft {
+        float: left;
+    }
+    .m-footright {
+        float: right;
+        position: relative;
+    }
+    .m-address {
+        h1 {
+            color: #439326;
+            font-size: 22px;
+            margin-bottom: 28px;
+        }
+        span {
+            font-size: 12px;
+            color: #a0a3a4;
+        }
+
+    }
+    .care {
+        width: 60px;
+        background: url(../images/weibo.png) no-repeat 40px 0;
+        height: 20px;
+    }
+    .same {
+        float: left;
+        color: #a0a3a4;
+        margin-left: 97px;
+        h4 {
+            margin-bottom: 16px;
+        }
+        a {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 16px;
+            text-decoration: none;
+            color: #a0a3a4;
+        }
+        &:last-child {
+            margin-left: 71px;
+        }
+    }
+}
+
+//登录弹窗
+.m-login {
+    display: none;
+    width: 386px;
+    height: 286px;
+    left: 50%;
+    top: 50%;
+    margin-top: -193px;
+    margin-left: -143px;
+    position: fixed;
+    background: #fff;
+    font-family: "华文仿宋", serif, sans-serif;
+    z-index: 11;
+    .f-tac {
+        width: 296px;
+        height: 222px;
+        margin: 30px auto 38px auto;
+        color: #2a2a2a;
+        .close {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 8px;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: url("../images/close.gif") no-repeat;
+        }
+    }
+    h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .u-ipt {
+        width: 294px;
+        height: 42px;
+        color: #9d9d9d;
+        font-size: 18px;
+        line-height: 42px;
+        background: #f9f9f9;
+        border: 1px solid #d7d7d7;
+        text-indent: 12px;
+    }
+    .password {
+        margin-top: 14px;
+        margin-bottom: 28px;
+    }
+    .u-btn {
+        cursor: pointer;
+        width: 294px;
+        height: 42px;
+        background: #49a037;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        border: 0;
+    }
+
+}
+
+.s-bgc {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #262626;
+    opacity: .5;
+    z-index: 10;
+}
+
+//视频播放
+.m-video {
+    display: none;
+    position: fixed;
+    width: 950px;
+    height: 674px;
+    left: 50%;
+    top: 50%;
+    margin-left: -475px;
+    margin-top: -337px;
+    background: white;
+    z-index: 11;
+    color: #333;
+    .close {
+        cursor: pointer;
+        float: right;
+        margin-right: 12px;
+        margin-top: 8px;
+        font-size: 16px;
+    }
+    h1, video {
+        margin-left: 32px;
+        font-size: 18px;
+    }
+    h1 {
+        margin-top: 30px;
+        margin-bottom: 22px;
+    }
+}
