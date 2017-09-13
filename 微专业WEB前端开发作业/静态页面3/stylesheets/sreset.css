@@ -1,0 +1,139 @@
+/* line 1, ../sass/sreset.scss */
+html {
+  color: #000;
+  background: #FFF;
+}
+
+/* line 6, ../sass/sreset.scss */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: normal;
+  font-family: "Microsoft YaHei", Helvetica, GillSansMT, sans-serif;
+}
+
+/* line 37, ../sass/sreset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 41, ../sass/sreset.scss */
+fieldset,
+img {
+  border: 0;
+}
+
+/* line 45, ../sass/sreset.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/*	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...*/
+/* line 52, ../sass/sreset.scss */
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 64, ../sass/sreset.scss */
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 68, ../sass/sreset.scss */
+caption,
+th {
+  text-align: left;
+}
+
+/* line 72, ../sass/sreset.scss */
+q:before,
+q:after {
+  content: '';
+}
+
+/* line 76, ../sass/sreset.scss */
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+/* to preserve line-height and selector appearance */
+/* line 83, ../sass/sreset.scss */
+sup {
+  vertical-align: text-top;
+}
+
+/* line 86, ../sass/sreset.scss */
+sub {
+  vertical-align: text-bottom;
+}
+
+/* line 89, ../sass/sreset.scss */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*to enable resizing for IE*/
+/* line 98, ../sass/sreset.scss */
+input,
+textarea,
+select {
+  *font-size: 100%;
+}
+
+/*because legend doesn't inherit in IE */
+/* line 105, ../sass/sreset.scss */
+legend {
+  color: #000;
+}
+
+/* line 109, ../sass/sreset.scss */
+.clear-float:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/*# sourceMappingURL=sreset.css.map */

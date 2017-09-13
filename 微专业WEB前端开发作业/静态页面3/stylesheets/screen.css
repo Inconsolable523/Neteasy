@@ -1,0 +1,961 @@
+@charset "UTF-8";
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 1, ../sass/sreset.scss */
+html {
+  color: #000;
+  background: #FFF;
+}
+
+/* line 6, ../sass/sreset.scss */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: normal;
+  font-family: "Microsoft YaHei", Helvetica, GillSansMT, sans-serif;
+}
+
+/* line 37, ../sass/sreset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 41, ../sass/sreset.scss */
+fieldset,
+img {
+  border: 0;
+}
+
+/* line 45, ../sass/sreset.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/*	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...*/
+/* line 52, ../sass/sreset.scss */
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 64, ../sass/sreset.scss */
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 68, ../sass/sreset.scss */
+caption,
+th {
+  text-align: left;
+}
+
+/* line 72, ../sass/sreset.scss */
+q:before,
+q:after {
+  content: '';
+}
+
+/* line 76, ../sass/sreset.scss */
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+/* to preserve line-height and selector appearance */
+/* line 83, ../sass/sreset.scss */
+sup {
+  vertical-align: text-top;
+}
+
+/* line 86, ../sass/sreset.scss */
+sub {
+  vertical-align: text-bottom;
+}
+
+/* line 89, ../sass/sreset.scss */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*to enable resizing for IE*/
+/* line 98, ../sass/sreset.scss */
+input,
+textarea,
+select {
+  *font-size: 100%;
+}
+
+/*because legend doesn't inherit in IE */
+/* line 105, ../sass/sreset.scss */
+legend {
+  color: #000;
+}
+
+/* line 109, ../sass/sreset.scss */
+.clear-float:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+@media screen and (max-width: 1206px) {
+  /* line 9, ../sass/screen.scss */
+  .m-left {
+    width: 735px;
+  }
+
+  /* line 12, ../sass/screen.scss */
+  .g-mn {
+    width: 962px;
+  }
+}
+@media screen and (min-width: 1206px) {
+  /* line 20, ../sass/screen.scss */
+  .m-left {
+    width: 980px;
+  }
+
+  /* line 23, ../sass/screen.scss */
+  .g-mn {
+    width: 1206px;
+  }
+}
+/* line 28, ../sass/screen.scss */
+.m-tips .f-tac, .m-introduce {
+  margin: 0 auto;
+}
+
+/* line 32, ../sass/screen.scss */
+body {
+  min-width: 1206px;
+}
+
+/* line 37, ../sass/screen.scss */
+.m-tips {
+  width: 100%;
+  color: #333;
+  background: #f3f3f3;
+  line-height: 36px;
+  display: none;
+}
+/* line 43, ../sass/screen.scss */
+.m-tips .f-tac {
+  width: 1206px;
+}
+/* line 47, ../sass/screen.scss */
+.m-tips .watch {
+  margin-left: 7px;
+  color: #4eab46;
+}
+/* line 51, ../sass/screen.scss */
+.m-tips .delete {
+  cursor: pointer;
+  float: right;
+}
+/* line 54, ../sass/screen.scss */
+.m-tips .delete span {
+  margin-right: 6px;
+}
+
+/* line 63, ../sass/screen.scss */
+.m-nav {
+  width: 100%;
+  height: 88px;
+  position: relative;
+}
+/* line 67, ../sass/screen.scss */
+.m-nav .f-tac {
+  width: 1206px;
+  overflow: hidden;
+  line-height: 88px;
+  margin: 0 auto;
+}
+/* line 74, ../sass/screen.scss */
+.m-nav-left {
+  float: left;
+  position: relative;
+}
+/* line 77, ../sass/screen.scss */
+.m-nav-left .u-title {
+  font-size: 22px;
+}
+/* line 79, ../sass/screen.scss */
+.m-nav-left .u-title .color, .m-nav-left .u-title .style {
+  color: #39a030;
+}
+/* line 82, ../sass/screen.scss */
+.m-nav-left .u-title .style {
+  margin: 0 10px;
+}
+/* line 88, ../sass/screen.scss */
+.m-nav-left .f-wrap {
+  position: absolute;
+  top: 50%;
+  margin-top: -48px;
+  left: 228px;
+  height: 96px;
+  width: 200px;
+}
+/* line 96, ../sass/screen.scss */
+.m-nav-left .u-care {
+  line-height: 22px;
+  display: inline-block;
+  width: 54px;
+  margin: 0 14px 0 30px;
+  background: #21a557;
+  text-align: center;
+}
+/* line 103, ../sass/screen.scss */
+.m-nav-left .u-care .follow {
+  color: #fff;
+}
+/* line 107, ../sass/screen.scss */
+.m-nav-left .u-followed {
+  display: inline-block;
+  width: 104px;
+  height: 20px;
+  background: #f6f6f6;
+  border: 1px solid #efefef;
+  border-radius: 2px;
+  line-height: 20px;
+  text-align: center;
+  margin: 0 14px 0 30px;
+}
+/* line 117, ../sass/screen.scss */
+.m-nav-left .u-followed .remove {
+  color: #9b9b9b;
+}
+/* line 119, ../sass/screen.scss */
+.m-nav-left .u-followed .remove:hover {
+  color: #459947;
+}
+/* line 124, ../sass/screen.scss */
+.m-nav-left .u-fans {
+  color: #b8b8b8;
+}
+/* line 126, ../sass/screen.scss */
+.m-nav-left .u-fans span {
+  margin-left: 6px;
+}
+/* line 133, ../sass/screen.scss */
+.m-nav-right {
+  float: right;
+  font-size: 16px;
+}
+/* line 136, ../sass/screen.scss */
+.m-nav-right .course {
+  color: #868686;
+  margin-left: 56px;
+  transition: color .6s;
+}
+/* line 140, ../sass/screen.scss */
+.m-nav-right .course:hover {
+  color: #4eab46;
+}
+/* line 144, ../sass/screen.scss */
+.m-nav-right a:last-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../images/search.png") no-repeat 0 -19px;
+  margin-left: 30px;
+}
+/* line 149, ../sass/screen.scss */
+.m-nav-right a:last-child:hover {
+  background: url("../images/search.png") no-repeat;
+}
+
+/* line 158, ../sass/screen.scss */
+.m-banner {
+  width: 100%;
+  margin: 0 auto;
+  height: 460px;
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (min-width: 1643px) {
+  /* line 158, ../sass/screen.scss */
+  .m-banner {
+    width: 1602px;
+  }
+}
+/* line 167, ../sass/screen.scss */
+.m-banner .wrap {
+  width: 1000%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* line 173, ../sass/screen.scss */
+.m-banner .wrap .banner-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* line 178, ../sass/screen.scss */
+.m-banner .wrap img {
+  width: 1652px;
+  height: 460px;
+  float: left;
+}
+/* line 184, ../sass/screen.scss */
+.m-banner .f-cb {
+  *zoom: 1;
+}
+/* line 187, ../sass/screen.scss */
+.m-banner .f-cb:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+/* line 194, ../sass/screen.scss */
+.m-banner .u-btn {
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+}
+/* line 199, ../sass/screen.scss */
+.m-banner .u-btn span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 11px;
+  cursor: pointer;
+  z-index: 5;
+}
+/* line 209, ../sass/screen.scss */
+.m-banner .u-btn .on {
+  background: black;
+}
+
+/* line 216, ../sass/screen.scss */
+.m-introduce {
+  max-width: 1206px;
+  height: 296px;
+  position: relative;
+  font-size: 14px;
+  font-family: "华文仿宋", serif, sans-serif;
+  line-height: 24px;
+  color: #b8b8b8;
+}
+/* line 225, ../sass/screen.scss */
+.m-introduce .f-center {
+  height: 100%;
+}
+/* line 227, ../sass/screen.scss */
+.m-introduce .f-center:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  vertical-align: middle;
+}
+/* line 235, ../sass/screen.scss */
+.m-introduce .class-content {
+  width: 32.3%;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+/* line 240, ../sass/screen.scss */
+.m-introduce .class-content > div {
+  padding-left: 35%;
+}
+/* line 245, ../sass/screen.scss */
+.m-introduce h1 {
+  font-family: "MicrosoftYaHei", serif, sans-serif;
+  font-size: 22px;
+  line-height: 44px;
+  color: #2a2a2a;
+}
+/* line 251, ../sass/screen.scss */
+.m-introduce img {
+  position: absolute;
+  top: 16px;
+  left: 36px;
+}
+/* line 256, ../sass/screen.scss */
+.m-introduce p {
+  margin-bottom: 21px;
+}
+/* line 260, ../sass/screen.scss */
+.m-introduce a {
+  color: #4eab46;
+}
+/* line 263, ../sass/screen.scss */
+.m-introduce a:hover {
+  text-decoration: underline;
+}
+
+/* line 269, ../sass/screen.scss */
+.m-picture {
+  height: 220px;
+  overflow: hidden;
+}
+/* line 272, ../sass/screen.scss */
+.m-picture .wrap {
+  width: 1609px;
+  margin: 0 auto;
+}
+
+/* line 279, ../sass/screen.scss */
+.s-bg {
+  background: #f6f6f6;
+}
+
+/* line 283, ../sass/screen.scss */
+.g-mn {
+  height: 1472px;
+  padding-top: 84px;
+  margin: 0 auto;
+  position: relative;
+}
+/* line 288, ../sass/screen.scss */
+.g-mn .m-left {
+  position: relative;
+}
+/* line 291, ../sass/screen.scss */
+.g-mn .m-left .u-change a {
+  display: inline-block;
+  width: 200px;
+  height: 48px;
+  font-size: 20px;
+  font-family: "华文仿宋", serif, sans-serif;
+  text-decoration: none;
+  background: #fff;
+  text-align: center;
+  margin-right: -4px;
+  color: #575757;
+}
+/* line 302, ../sass/screen.scss */
+.g-mn .m-left .u-change a span {
+  line-height: 48px;
+}
+/* line 306, ../sass/screen.scss */
+.g-mn .m-left .u-change .check {
+  background: #4eab46;
+  color: white;
+}
+/* line 311, ../sass/screen.scss */
+.g-mn .m-left .m-class {
+  margin-top: 28px;
+  height: 1220px;
+}
+/* line 316, ../sass/screen.scss */
+.g-mn .m-left .m-content {
+  position: relative;
+  line-height: 22px;
+  width: 222px;
+  height: 228px;
+  float: left;
+  background: white;
+  margin-right: 22px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-family: "MicrosoftYaHei", serif, sans-serif;
+}
+/* line 327, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture {
+  height: 125px;
+}
+/* line 329, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details {
+  position: absolute;
+  z-index: 999;
+  top: -10px;
+  left: -10px;
+  display: none;
+  width: 479px;
+  background: #fff;
+  box-shadow: 0 0 1px 2px #edeced;
+}
+/* line 338, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header {
+  overflow: hidden;
+  width: 457px;
+  height: 133px;
+  padding: 11px;
+}
+/* line 343, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header img {
+  float: left;
+}
+/* line 346, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header .u-info {
+  float: left;
+  overflow: hidden;
+  width: 215px;
+  margin-left: 19px;
+}
+/* line 351, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header .u-info .title {
+  margin-bottom: 17px;
+  padding-top: 2px;
+  font-size: 18px;
+  color: #333;
+}
+/* line 357, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header .u-info .leaner {
+  display: inline-block;
+  height: 16px;
+  margin-left: 4px;
+  padding-left: 15px;
+  font-size: 12px;
+  color: #666;
+  background: url("../images/people.png") 0 5px no-repeat;
+}
+/* line 366, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header .u-info .distor {
+  margin-top: 5px;
+  margin-left: 4px;
+  font-size: 12px;
+  color: #666;
+}
+/* line 371, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header .u-info .distor a:hover {
+  cursor: pointer;
+  color: #39a030;
+}
+/* line 376, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-header .u-info .category {
+  margin-top: 5px;
+  margin-left: 4px;
+  font-size: 12px;
+  color: #666;
+}
+/* line 384, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-content1 {
+  width: 479px;
+  background-color: #f8f8f8;
+}
+/* line 387, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture .m-details .u-content1 p {
+  overflow: hidden;
+  width: 433px;
+  padding: 11px 23px;
+  font-size: 14px;
+  color: #666;
+}
+/* line 396, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-picture:hover .m-details {
+  cursor: pointer;
+  box-shadow: 4px 4px 4px #ecebeb;
+  display: block;
+}
+/* line 402, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 {
+  height: 104px;
+  margin: 4px 10px 0 10px;
+}
+/* line 405, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 a {
+  display: inline-block;
+  width: 210px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* line 411, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 a:hover {
+  color: #78b672;
+}
+/* line 415, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 .style {
+  display: block;
+  color: #9f9f9f;
+  margin-top: -8px;
+}
+/* line 420, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 .count {
+  display: inline-block;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 2px;
+  margin-top: 6px;
+  background: url("../images/course_price.png") 3px 2px no-repeat;
+  color: #d5d5d5;
+  font-size: 14px;
+  border: 1px solid #d5d5d5;
+}
+/* line 430, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 .count span {
+  margin-left: 18px;
+  margin-right: -5px;
+}
+/* line 435, ../sass/screen.scss */
+.g-mn .m-left .m-content .u-content2 .checked {
+  color: #e34428;
+}
+/* line 443, ../sass/screen.scss */
+.g-mn .m-left .m-list {
+  position: absolute;
+  right: 22px;
+  bottom: -50px;
+  height: 20px;
+}
+/* line 448, ../sass/screen.scss */
+.g-mn .m-left .m-list .move {
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  font-size: 14px;
+  background: #8dd2a1;
+  line-height: 20px;
+  text-align: center;
+  color: #fefffe;
+}
+/* line 459, ../sass/screen.scss */
+.g-mn .m-left .m-list .classList {
+  display: inline-block;
+  width: 250px;
+  height: 20px;
+  overflow: hidden;
+}
+/* line 464, ../sass/screen.scss */
+.g-mn .m-left .m-list .classList > a {
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: black;
+}
+/* line 475, ../sass/screen.scss */
+.g-mn .m-left .m-list .classList a:hover, .g-mn .m-left .m-list .classList .list-checked {
+  color: #8dd2a1;
+}
+/* line 482, ../sass/screen.scss */
+.g-mn .m-right {
+  position: absolute;
+  right: 0;
+  top: 84px;
+  width: 226px;
+}
+/* line 487, ../sass/screen.scss */
+.g-mn .m-right .m-organizition {
+  background: white;
+  height: 230px;
+}
+/* line 490, ../sass/screen.scss */
+.g-mn .m-right .m-organizition h1 {
+  padding-left: 18px;
+  height: 54px;
+  line-height: 54px;
+  font-size: 16px;
+}
+/* line 496, ../sass/screen.scss */
+.g-mn .m-right .m-organizition div {
+  border-top: 1px solid #e0e0e0;
+}
+/* line 499, ../sass/screen.scss */
+.g-mn .m-right .m-organizition p {
+  padding-left: 18px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #9b9b9b;
+}
+/* line 505, ../sass/screen.scss */
+.g-mn .m-right .m-organizition a {
+  display: inline-block;
+  width: 202px;
+  height: 110px;
+  margin-top: 10px;
+  background: url(../images/vidio.png) no-repeat 18px 0;
+}
+/* line 511, ../sass/screen.scss */
+.g-mn .m-right .m-organizition a img {
+  margin-left: 82px;
+  margin-top: 30px;
+}
+/* line 517, ../sass/screen.scss */
+.g-mn .m-right .m-hot {
+  height: 778px;
+  background: white;
+  margin-top: 20px;
+  position: relative;
+}
+/* line 522, ../sass/screen.scss */
+.g-mn .m-right .m-hot h1 {
+  padding-left: 18px;
+  height: 56px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+  line-height: 56px;
+}
+/* line 529, ../sass/screen.scss */
+.g-mn .m-right .m-hot .style {
+  width: 3000px;
+}
+/* line 532, ../sass/screen.scss */
+.g-mn .m-right .m-hot ul {
+  list-style: none;
+  font-size: 14px;
+  color: #3b3b3b;
+  border-top: 1px solid #e0e0e0;
+  height: 718px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 56px;
+}
+/* line 543, ../sass/screen.scss */
+.g-mn .m-right .m-hot .u-hotRank {
+  margin-top: 20px;
+  padding-left: 18px;
+  height: 50px;
+  position: relative;
+  background: url(../images/people.png) no-repeat 84px 29px;
+}
+/* line 549, ../sass/screen.scss */
+.g-mn .m-right .m-hot .u-hotRank a {
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+  width: 123px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  margin-top: -55px;
+  margin-left: 65px;
+}
+/* line 561, ../sass/screen.scss */
+.g-mn .m-right .m-hot .u-hotRank img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+/* line 566, ../sass/screen.scss */
+.g-mn .m-right .m-hot .u-hotRank span {
+  position: absolute;
+  left: 98px;
+  top: 26px;
+  color: #9d9d9d;
+  font-size: 14px;
+}
+
+/* line 579, ../sass/screen.scss */
+.g-foot {
+  height: 262px;
+  background: #21262b;
+}
+/* line 582, ../sass/screen.scss */
+.g-foot .m-wrapper {
+  max-width: 1206px;
+  padding: 94px 0 0 50px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+/* line 590, ../sass/screen.scss */
+.g-foot .m-footleft {
+  float: left;
+}
+/* line 593, ../sass/screen.scss */
+.g-foot .m-footright {
+  float: right;
+  position: relative;
+}
+/* line 598, ../sass/screen.scss */
+.g-foot .m-address h1 {
+  color: #439326;
+  font-size: 22px;
+  margin-bottom: 28px;
+}
+/* line 603, ../sass/screen.scss */
+.g-foot .m-address span {
+  font-size: 12px;
+  color: #a0a3a4;
+}
+/* line 609, ../sass/screen.scss */
+.g-foot .care {
+  width: 60px;
+  background: url(../images/weibo.png) no-repeat 40px 0;
+  height: 20px;
+}
+/* line 614, ../sass/screen.scss */
+.g-foot .same {
+  float: left;
+  color: #a0a3a4;
+  margin-left: 97px;
+}
+/* line 618, ../sass/screen.scss */
+.g-foot .same h4 {
+  margin-bottom: 16px;
+}
+/* line 621, ../sass/screen.scss */
+.g-foot .same a {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  color: #a0a3a4;
+}
+/* line 628, ../sass/screen.scss */
+.g-foot .same:last-child {
+  margin-left: 71px;
+}
+
+/* line 635, ../sass/screen.scss */
+.m-login {
+  display: none;
+  width: 386px;
+  height: 286px;
+  left: 50%;
+  top: 50%;
+  margin-top: -193px;
+  margin-left: -143px;
+  position: fixed;
+  background: #fff;
+  font-family: "华文仿宋", serif, sans-serif;
+  z-index: 11;
+}
+/* line 647, ../sass/screen.scss */
+.m-login .f-tac {
+  width: 296px;
+  height: 222px;
+  margin: 30px auto 38px auto;
+  color: #2a2a2a;
+}
+/* line 652, ../sass/screen.scss */
+.m-login .f-tac .close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../images/close.gif") no-repeat;
+}
+/* line 663, ../sass/screen.scss */
+.m-login h1 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+/* line 667, ../sass/screen.scss */
+.m-login .u-ipt {
+  width: 294px;
+  height: 42px;
+  color: #9d9d9d;
+  font-size: 18px;
+  line-height: 42px;
+  background: #f9f9f9;
+  border: 1px solid #d7d7d7;
+  text-indent: 12px;
+}
+/* line 677, ../sass/screen.scss */
+.m-login .password {
+  margin-top: 14px;
+  margin-bottom: 28px;
+}
+/* line 681, ../sass/screen.scss */
+.m-login .u-btn {
+  cursor: pointer;
+  width: 294px;
+  height: 42px;
+  background: #49a037;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  border: 0;
+}
+
+/* line 694, ../sass/screen.scss */
+.s-bgc {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #262626;
+  opacity: .5;
+  z-index: 10;
+}
+
+/* line 707, ../sass/screen.scss */
+.m-video {
+  display: none;
+  position: fixed;
+  width: 950px;
+  height: 674px;
+  left: 50%;
+  top: 50%;
+  margin-left: -475px;
+  margin-top: -337px;
+  background: white;
+  z-index: 11;
+  color: #333;
+}
+/* line 719, ../sass/screen.scss */
+.m-video .close {
+  cursor: pointer;
+  float: right;
+  margin-right: 12px;
+  margin-top: 8px;
+  font-size: 16px;
+}
+/* line 726, ../sass/screen.scss */
+.m-video h1, .m-video video {
+  margin-left: 32px;
+  font-size: 18px;
+}
+/* line 730, ../sass/screen.scss */
+.m-video h1 {
+  margin-top: 30px;
+  margin-bottom: 22px;
+}
+
+/*# sourceMappingURL=screen.css.map */
