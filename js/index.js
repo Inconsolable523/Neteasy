@@ -18,7 +18,11 @@ var module = (function () {
             index.topbarControl();
             index.bindStar();
             index.login.init();
-            index.carousel();
+            index.carousel.init({
+                beforeImgSwitch: index.lazyLoad
+            });
+            index.carousel.start();
+            // index.carousel.stop();            
             index.contentSwitch();
             index.playVideo();
             index.hotList();
@@ -44,7 +48,7 @@ var module = (function () {
             }
 
             $del.addEventListener('click', function () {
-                utils.cookie('prelose', 'true', {expires: 7, path: '/'});
+                utils.cookie('prelose', 'true', { expires: 7, path: '/' });
                 utils.fade.fadeOut($pre);
             }, false);
         },
@@ -100,7 +104,7 @@ var module = (function () {
                         if (a == 1) {
                             index.state.hasLogin = true;
                             //登录成功
-                            utils.cookie('loginSuc', 'true', {expires: 7, path: '/'});
+                            utils.cookie('loginSuc', 'true', { expires: 7, path: '/' });
                             $loginIn.innerHTML = '登录成功';
 
                             // 隐藏登录框
@@ -127,7 +131,7 @@ var module = (function () {
                 utils.ajax.get(index.API.changeFollowState, '', function (b) {
                     if (b == 1) {
                         //设置关注成功cookie
-                        utils.cookie('followSuc', 'true', {expires: 7, path: '/'});
+                        utils.cookie('followSuc', 'true', { expires: 7, path: '/' });
                         $care.style.display = "none";
                         $followd.style.display = "inline-block";
                         var fans = parseInt($fansNum.innerText);
@@ -149,55 +153,138 @@ var module = (function () {
                 }, false)
             }
         },
-        //新轮播
-        carousel: function () {
-            var dBannerWrapper = document.getElementById("J_header-banner"),
-                dImgs = document.getElementsByClassName('banner-img'),
-                dDotsContainer = document.getElementById("J_btn"),
-                dDots = dDotsContainer.getElementsByTagName('span'),
-                timer = null,
-                bindex = 1;
+        // 新轮播
+        // TODO:不破坏carousel的封装，增量植入懒加载
+        /**
+         * carousel.init
+         * @param {number} bindex 起始下标
+         * @param {function} beforeImgSwitch 钩子函数
+         */
+        carousel: (function () {
+            var __dBannerWrapper = null,
+                __dImgs = null,
+                __dDotsContainer = null,
+                __dDots = null,
+                __timer = null,
+                __bindex = null,
+                __beforeImgSwitch = function (nextIndex) { };
 
-            dDotsContainer.addEventListener('click', function (e) {
-                if (dDotsContainer.getElementsByClassName('on')[0].getAttribute('data-num') == e.target.getAttribute('data-num') || !e.target.getAttribute('data-num')) {
-                    return
-                }
-                _turnToBanner(e.target.getAttribute('data-num'));
-            }, false);
-            dBannerWrapper.addEventListener('mouseover', function () {
-                clearInterval(timer);
-            });
-            dBannerWrapper.addEventListener('mouseout', function () {
-                _autoPlay();
-            });
-            // 抽象出跳转到某张图片的动作
-            function _turnToBanner(index) {
-                // 改变图片
-                for (var i = 0; i < dImgs.length; i++) {
-                    if (i != index) {
-                        utils.fade.fadeOut(dImgs[i], 500);
+            var carousel = {
+                init: function (opt) {
+                    __dBannerWrapper = document.getElementById("J_header-banner");
+                    __dImgs = __dBannerWrapper.getElementsByTagName('img');
+                    __dDotsContainer = document.getElementById("J_btn");
+                    __dDots = __dDotsContainer.getElementsByTagName('span');
+                    __bindex = opt.bindex || 1;
+                    __beforeImgSwitch = opt.beforeImgSwitch || __beforeImgSwitch;
+                },
+                start: function () {
+                    _autoPlay();
+                    __dBannerWrapper.addEventListener('mouseout', function () {
+                        _autoPlay();
+                    });
+                    __dBannerWrapper.addEventListener('mouseover', function () {
+                        index.carousel.stop();
+                        // clearInterval(__timer);
+                    });
+                    __dDotsContainer.addEventListener('click', function (e) {
+                        if (this.getElementsByClassName('on')[ 0 ].getAttribute('data-num') === e.target.getAttribute('data-num') || !e.target.getAttribute('data-num')) {
+                            return
+                        }
+                        _turnToBanner(e.target.getAttribute('data-num'));
+                    }, false);
+
+                    function _turnToBanner(index) {
+                        __beforeImgSwitch(index, function () {
+                            // 改变图片
+                            for (var i = 0; i < __dImgs.length; i++) {
+                                if (i != index) {
+                                    utils.fade.fadeOut(__dImgs[ i ], 500);
+                                }
+                            }
+                            utils.fade.fadeIn(__dImgs[ index ], 500);
+                            // 改变按钮
+                            for (var i = 0; i < __dDots.length; i++) {
+                                utils.removeClass(__dDots[ i ], 'on');
+                            }
+                            utils.addClass(__dDots[ index ], 'on');
+                        });
                     }
-                }
-                utils.fade.fadeIn(dImgs[index], 500);
-                // 改变按钮
-                for (var i = 0; i < dDots.length; i++) {
-                    utils.removeClass(dDots[i], 'on');
-                }
-                utils.addClass(dDots[index], 'on');
-            }
-
-            function _autoPlay() {
-                timer = setInterval(function () {
-                    _turnToBanner(bindex);
-                    bindex++;
-                    if (bindex > 2) {
-                        bindex = 0;
+                    function _autoPlay() {
+                        __timer = setInterval(function () {
+                            _turnToBanner(__bindex);
+                            __bindex++;
+                            if (__bindex > 2) {
+                                __bindex = 0;
+                            }
+                        }, 5000);
                     }
-                }, 5000);
+                },
+                stop: function () {
+                    clearInterval(__timer);
+                }
             }
+            return carousel;
+        })()
 
-            _autoPlay();
+        ,
+        lazyLoad: function (nextIndex, next) {
+            var elem = document.getElementsByClassName('img-' + nextIndex)[ 0 ]
+            if (!elem.src) {
+                elem.setAttribute('src', elem.getAttribute('data-src'));
+                elem.onload = next
+            } else {
+                next();
+            }
         },
+        // carousel: function () {
+        //     var dBannerWrapper = document.getElementById("J_header-banner"),
+        //         dImgs =dBannerWrapper.getElementsByTagName('img'),
+        //         dDotsContainer = document.getElementById("J_btn"),
+        //         dDots = dDotsContainer.getElementsByTagName('span'),
+        //         timer = null,
+        //         bindex = 1;
+
+        //     dDotsContainer.addEventListener('click', function (e) {
+        //         if (dDotsContainer.getElementsByClassName('on')[0].getAttribute('data-num') == e.target.getAttribute('data-num') || !e.target.getAttribute('data-num')) {
+        //             return
+        //         }
+        //         _turnToBanner(e.target.getAttribute('data-num'));
+        //     }, false);
+        //     dBannerWrapper.addEventListener('mouseover', function () {
+        //         clearInterval(timer);
+        //     });
+        //     dBannerWrapper.addEventListener('mouseout', function () {
+        //         _autoPlay();
+        //     });
+        //     // 抽象出跳转到某张图片的动作
+        //     function _turnToBanner(index) {
+        //         // 改变图片
+        //         for (var i = 0; i < dImgs.length; i++) {
+        //             if (i != index) {  
+        //                 utils.fade.fadeOut(dImgs[i], 500);
+        //             }
+        //         }
+        //         utils.fade.fadeIn(dImgs[index], 500);
+        //         // 改变按钮
+        //         for (var i = 0; i < dDots.length; i++) {
+        //             utils.removeClass(dDots[i], 'on');
+        //         }
+        //         utils.addClass(dDots[index], 'on');
+        //     }
+
+        //     function _autoPlay() {
+        //         timer = setInterval(function () {
+        //             _turnToBanner(bindex);
+        //             bindex++;
+        //             if (bindex > 2) {
+        //                 bindex = 0;
+        //             }
+        //         }, 5000);
+        //     }
+
+        //     _autoPlay();
+        // }
         //左侧内容区切换
         contentSwitch: function () {
             var $btn1 = document.getElementById("J_change1"),
@@ -275,7 +362,7 @@ var module = (function () {
                         '\<dl class="m-content">' +
                         '\<dt class="u-picture">' +
                         '\<img src=' + data.middlePhotoUrl + ' alt="" width="222" height="124">' +
-                            //课程内容详情
+                        //课程内容详情
                         '\<div class="m-details">' +
                         '\<div class="u-header">' +
                         '\<img src=' + data.middlePhotoUrl + ' alt="" width="222" height="124">' +
@@ -356,14 +443,14 @@ var module = (function () {
                     $list.innerHTML = tpl;
                 }
                 for (var i = 0; i < $listBtn.length; i++) {
-                    utils.removeClass($listBtn[i], 'list-checked');
+                    utils.removeClass($listBtn[ i ], 'list-checked');
                 }
-                utils.addClass($listBtn[data.pageIndex - 1], 'list-checked');
+                utils.addClass($listBtn[ data.pageIndex - 1 ], 'list-checked');
             },
 
             // 跳到相应页面
             _turnTopage: function (pageNum, data) {
-                var type = document.getElementById('J_leftChange').getElementsByClassName('check')[0].getAttribute('data-type');
+                var type = document.getElementById('J_leftChange').getElementsByClassName('check')[ 0 ].getAttribute('data-type');
                 index.getCorseCard(pageNum, data.pageSize, type);
             }
         },
@@ -422,11 +509,11 @@ var module = (function () {
                 function scrol() {
                     var $test = document.getElementsByClassName("J_hotRank");
                     timer = setInterval(function () {
-                        $test[i].style.display = 'none';
+                        $test[ i ].style.display = 'none';
                         i++;
                         if (i >= 10) {
                             for (var j = 0; j < 10; j++) {
-                                $test[j].style.display = 'block';
+                                $test[ j ].style.display = 'block';
                             }
                             i = 0;
                         }

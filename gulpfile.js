@@ -16,6 +16,9 @@ gulp.task('sass', () =>
     .pipe(gulp.dest('./dist/css'))
 );
 
-gulp.task('default', [ 'sass', 'minifyjs' ], function () {
-  return
+gulp.task('default', function () {
+  return gulp.watch(['sass/**/*.scss','js/**/*.js'],[ 'sass', 'minifyjs' ])
 });
+
+
+

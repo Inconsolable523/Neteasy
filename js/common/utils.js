@@ -27,7 +27,7 @@
     return {
         // ajax封装
         ajax: {
-            get: function (url, data,callback) {
+            get: function (url, data, callback) {
                 var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 
                 function checkTimeout() {
@@ -36,8 +36,8 @@
                         xhr.abort();//关闭请求
                     }
                 }
-                if(data){
-                    url=url+'?'+data;
+                if (data) {
+                    url = url + '?' + data;
                 }
                 setTimeout(checkTimeout, 5 * 1000);//设置超时时间
                 xhr.onreadystatechange = function () {
@@ -99,7 +99,7 @@
                 var domain = options.domain ? ';domain=' + (options.domain) : '';
                 var secure = options.secure ? ';secure' : '';
                 //设置cookie
-                document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+                document.cookie = [ name, '=', encodeURIComponent(value), expires, path, domain, secure ].join('');
             } else {
                 //读取cookie
                 if (document.cookie.length > 0) {
@@ -124,13 +124,12 @@
 
         removeClass: function (dom, iclass) {
             var className = dom.className;
-            if(!className){
+            if (!className) {
                 return
             }
             className = className.replace(iclass, "");
             dom.className = className;
         },
-
         replaceClass: function (dom, iclass, toClassName) {
             var className = dom.className;
             className = className.replace(iclass, toClassName);
@@ -152,10 +151,9 @@
 
                 speed = speed || 10;
                 opacity = opacity || 100;
-                elem.style.display = 'block';
 
+                // elem.style.display = 'block';
                 var val = 0;
-
                 (function increasing() {
                     //循环将透明值以5递增,即淡入效果
                     _this.SetOpacity(elem, val);
@@ -181,11 +179,12 @@
                         setTimeout(decreasing, speed / 25);
                     } else if (val <= 0) {
                         //元素透明度为0后隐藏元素
-                        elem.style.display = 'none';
+                        return;
+                        // elem.style.display = 'none';
                     }
                 })()
             }
-        },
+        }
     }
 }));
 
